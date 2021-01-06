@@ -1,5 +1,5 @@
 homepage: "https://pluszero.co.kr/"
 documentation: "https://pluszero.co.kr/"
 versions:
-  - sha: b9bfe122aec01b275bd37371e40f7770bc05fd38
+  - sha: 1da885918d997ccbdc7d86e7c8c47c099ff58159
     changeNotes: Initial release.
