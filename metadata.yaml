@@ -1,5 +1,5 @@
 homepage: "https://pluszero.co.kr/"
-documentation: "https://pluszero.co.kr/"
+documentation: "https://github.com/pluszero-global/GTM-Template"
 versions:
   - sha: 1da885918d997ccbdc7d86e7c8c47c099ff58159
-    changeNotes: Initial release.
+    changeNotes: First Version
