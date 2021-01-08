@@ -1205,7 +1205,6 @@ const log = require('logToConsole');
 const makeTableMap = require('makeTableMap');
 const query = require('queryPermission');
 const createQueue = require('createQueue');
-const dataLayerPush = createQueue('dataLayer');
 const createArgumentsQueue = require('createArgumentsQueue');
 const copyFromWindow = require('copyFromWindow');
 const setInWindow = require('setInWindow');
@@ -1219,7 +1218,6 @@ let additional_parameters = data.additional_parameters ? makeTableMap(data.addit
 let user_properties = data.user_properties ? makeTableMap(data.user_properties, 'key', 'value') : undefined;
 
 
-
 let gtag = copyFromWindow('gtag');
 if(!gtag){
   gtag = createArgumentsQueue('gtag', 'dataLayer');
@@ -1231,25 +1229,6 @@ if(!gtag){
 gtag('config', measurementId, {
   send_page_view: false
 });
-
-
-const ecommerce_list = [
-  'add_payment_info',
-  'add_shipping_info',
-  'add_to_cart',
-  'add_to_wishlist',
-  'begin_checkout',
-  'generate_lead',
-  'purchase',
-  'refund',
-  'remove_from_cart',
-  'select_item',
-  'select_promotion',
-  'view_cart',
-  'view_item',
-  'view_item_list',
-  'view_promotion'
-];
 
 if(user_properties){
   gtag('set', 'user_properties', user_properties);
@@ -1266,14 +1245,10 @@ if(additional_parameters){
   parameters = additional_parameters;
 }
 
-
 if(0 <= eventType.search("ecommerce_")){
   var event_type = eventType.split("ecommerce_")[1];
   var ecommerce = parameters ? parameters : {};
-  if(items){
-    ecommerce.items = items;
-  }
-  
+  ecommerce.items = items;
   
   ecommerce.send_to = measurementId;
   gtag('event', event_type, ecommerce);
@@ -1287,13 +1262,7 @@ if(0 <= eventType.search("ecommerce_")){
   parameters.send_to = measurementId;
   gtag('event', eventType, parameters);
 }
-/*
-const dataLayer = dL;
-if (query('access_globals', 'readwrite', 'dataLayer')) {
-  dataLayerPush(dataLayer);
-  log("data:", dataLayer);
-}
-*/
+
 data.gtmOnSuccess();
 
 
