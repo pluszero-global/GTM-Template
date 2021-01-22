@@ -1210,6 +1210,7 @@ const copyFromWindow = require('copyFromWindow');
 const setInWindow = require('setInWindow');
 const injectScript = require('injectScript');
 const getTimestampMillis = require('getTimestampMillis');
+const encodeUriComponent = require('encodeUriComponent');
 const eventType = data.eventType;
 const measurementId = data.measurementId;
 const items = data.items;
@@ -1221,7 +1222,7 @@ let user_properties = data.user_properties ? makeTableMap(data.user_properties, 
 let gtag = copyFromWindow('gtag');
 if(!gtag){
   gtag = createArgumentsQueue('gtag', 'dataLayer');
-  injectScript('https://www.googletagmanager.com/gtag/js?id='+measurementId, data.gtmOnSuccess, data.gtmOnFailure, 'gtag');
+  injectScript('https://www.googletagmanager.com/gtag/js?id='+encodeUriComponent(measurementId), data.gtmOnSuccess, data.gtmOnFailure, 'gtag');
   
   gtag('js', getTimestampMillis());
 }
@@ -1421,7 +1422,7 @@ ___TESTS___
 scenarios:
 - name: Quick Test
   code: runCode();
-setup: ''
+setup: aewtawet
 
 
 ___NOTES___
