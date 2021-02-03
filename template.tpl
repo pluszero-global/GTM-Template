@@ -149,7 +149,7 @@ ___TEMPLATE_PARAMETERS___
       }
     ],
     "simpleValueType": true,
-    "help": "You could select GA4 recommended events along with their prescribed parameters, to ensure maximum available detail in your GA4 property reports. \u003ca href\u003d\u0027https://https://support.google.com/analytics/answer/9267735\u0027\u003eCheck the details\u003c/a\u003e"
+    "help": "You could select GA4 recommended events along with their prescribed parameters, to ensure maximum available detail in your GA4 property reports. \u003ca href\u003d\u0027https://support.google.com/analytics/answer/9267735\u0027\u003eCheck the details\u003c/a\u003e"
   },
   {
     "type": "TEXT",
@@ -1260,7 +1260,12 @@ if(0 <= eventType.search("ecommerce_")){
   dL.event = eventType;
   dL.parameters = parameters;
   
+  if(!parameters){
+    parameters = {};
+  }
+  
   parameters.send_to = measurementId;
+  
   gtag('event', eventType, parameters);
 }
 
