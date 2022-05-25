@@ -4,4 +4,4 @@ It is really hard to find pre-determined event name and parameter when you use t
 This template helps you to do recommended event tagging with select box.
 You can only choose event name and parameter on select box when you create tag in GTM.
 
-ENJOY
+Enjoy
